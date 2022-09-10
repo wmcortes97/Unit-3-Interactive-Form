@@ -125,3 +125,37 @@ paymentMethod.addEventListener("change", (e) => {
     creditCardSection();
   }
 });
+
+/**
+ * FORM VALIDATION
+ */
+
+function nameValidation() {
+  const nameInput = document.getElementById("name");
+  if (nameInput.value === "") {
+    return true;
+  } else {
+    return false;
+  }
+}
+nameValidation();
+
+function emailValidation() {
+  const emailInput = document.getElementById("email");
+  const regex = /^\w+@\w+\.com$/;
+  return regex.test(emailInput.value);
+}
+
+emailValidation();
+
+function registeration() {}
+
+function ccPaymentSelection() {}
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (e) => {
+  // if(nameValidation() || ) {
+  //     e.preventDefault();
+  // }
+});
