@@ -28,6 +28,8 @@ jobTitle.addEventListener("change", (e) => {
  * T-SHIRT INFO
  * disable the color option
  * group color options based on data theme
+ * addEventListener to select element for t-shirt design
+ * color options change depending on t-shirt design.
  */
 const chooseColor = document.getElementById("color");
 chooseColor.disabled = true;
@@ -54,3 +56,41 @@ chooseTheme.addEventListener("change", (e) => {
     chooseColor.disabled = true;
   }
 });
+
+/**
+ * REGIESTER FOR ACTIVITIES
+ * Total $ should update to reflect the sum of cost
+ */
+
+const registerSelection = document.getElementById("activities");
+
+const eventCost = document.getElementsByClassName("activity-cost");
+
+let totalCost = document.getElementById("activities-cost");
+
+let counter = 0;
+
+registerSelection.addEventListener("change", (e) => {
+  if (e.target.className === "activity-cost") {
+    for (let i = 0; i < eventCost.length; i++) {
+      let currency = eventCost[i].innerHTML;
+      let number = Number(currency.replace(/[^0-9.-]+/g, ""));
+      counter = counter + number;
+      totalCost.innerHTML = `Total: $${counter}`;
+    }
+  }
+});
+
+/**
+ * PAYMENT INFO
+ *
+ */
+
+const paymentMethod = document.getElementById("payment");
+paymentMethod[1].setAttribute("selected", true);
+
+const paypalMessage = document.getElementById("paypal");
+paypalMessage.style.display = "none";
+
+const bitcoinMessage = document.getElementById("bitcoin");
+bitcoinMessage.style.display = "none";
