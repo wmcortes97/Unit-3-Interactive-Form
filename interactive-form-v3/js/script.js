@@ -94,3 +94,31 @@ paypalMessage.style.display = "none";
 
 const bitcoinMessage = document.getElementById("bitcoin");
 bitcoinMessage.style.display = "none";
+
+const creditCardSection = document.getElementById("credit-card");
+
+//-------- what user sees on page initially ^ -------//
+
+function paypalChange() {
+  paypalMessage.removeAttribute("style");
+  bitcoinMessage.style.display = "none";
+  creditCardSection.style.display = "none";
+}
+function bitcoinChange() {
+  bitcoinMessage.removeAttribute("style");
+  paypalMessage.style.display = "none";
+  creditCardSection.style.display = "none";
+}
+
+//------- ^ functions depending that will be inserted in eventListener ----------//
+paymentMethod.addEventListener("change", (e) => {
+  if (e.target.value === "paypal") {
+    paypalChange();
+  } else if (e.target.value === "bitcoin") {
+    bitcoinChange();
+  } else {
+    paypalMessage.style.display = "none";
+    bitcoinMessage.style.display = "none";
+    creditCardSection.removeAttribute("style");
+  }
+});
