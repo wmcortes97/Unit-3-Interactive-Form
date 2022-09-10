@@ -95,30 +95,33 @@ paypalMessage.style.display = "none";
 const bitcoinMessage = document.getElementById("bitcoin");
 bitcoinMessage.style.display = "none";
 
-const creditCardSection = document.getElementById("credit-card");
+const creditCardField = document.getElementById("credit-card");
 
 //-------- what user sees on page initially ^ -------//
 
-function paypalChange() {
+function paypalSelection() {
   paypalMessage.removeAttribute("style");
   bitcoinMessage.style.display = "none";
-  creditCardSection.style.display = "none";
+  creditCardField.style.display = "none";
 }
-function bitcoinChange() {
+function bitcoinSelection() {
   bitcoinMessage.removeAttribute("style");
   paypalMessage.style.display = "none";
-  creditCardSection.style.display = "none";
+  creditCardField.style.display = "none";
 }
 
+function creditCardSection() {
+  creditCardField.removeAttribute("style");
+  paypalMessage.style.display = "none";
+  bitcoinMessage.style.display = "none";
+}
 //------- ^ functions depending that will be inserted in eventListener ----------//
 paymentMethod.addEventListener("change", (e) => {
   if (e.target.value === "paypal") {
-    paypalChange();
+    paypalSelection();
   } else if (e.target.value === "bitcoin") {
-    bitcoinChange();
+    bitcoinSelection();
   } else {
-    paypalMessage.style.display = "none";
-    bitcoinMessage.style.display = "none";
-    creditCardSection.removeAttribute("style");
+    creditCardSection();
   }
 });
