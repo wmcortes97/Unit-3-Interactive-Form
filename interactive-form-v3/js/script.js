@@ -133,9 +133,9 @@ paymentMethod.addEventListener("change", (e) => {
 function nameValidation() {
   const nameInput = document.getElementById("name");
   if (nameInput.value === "") {
-    return true;
-  } else {
     return false;
+  } else {
+    return true;
   }
 }
 nameValidation();
@@ -148,7 +148,7 @@ function emailValidation() {
 
 emailValidation();
 
-function registeration() {}
+function registration() {}
 
 function ccPaymentSelection() {}
 
