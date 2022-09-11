@@ -64,22 +64,39 @@ chooseTheme.addEventListener("change", (e) => {
 
 const registerSelection = document.getElementById("activities");
 
-const eventCost = document.getElementsByClassName("activity-cost");
+const checkboxes = document.querySelectorAll(".activities input");
 
 let totalCost = document.getElementById("activities-cost");
 
-let counter = 0;
-
 registerSelection.addEventListener("change", (e) => {
-  if (e.target.className === "activity-cost") {
-    for (let i = 0; i < eventCost.length; i++) {
-      let currency = eventCost[i].innerHTML;
-      let number = Number(currency.replace(/[^0-9.-]+/g, ""));
-      counter = counter + number;
-      totalCost.innerHTML = `Total: $${counter}`;
+  let clicked = e.target;
+  let clickedCost = clicked.getAttribute("data-cost");
+
+  for (let i = 0; i < checkboxes.length; i++) {
+    let checkboxCost = checkboxes[i].getAttribute("data-cost");
+
+    if (clickedCost === checkboxCost) {
+      totalCost.innerHTML = `Total: $${checkboxCost}`;
     }
   }
 });
+//console.log(clickedCost); //this works
+
+//   for (let i = 0; i<)
+// });
+
+//let counter = 0;
+
+// registerSelection.addEventListener("change", (e) => {
+//     for (let i = 0; i < eventCost.length; i++) {
+//       if (e.target.className === "activity-cost") {
+//       let currency = eventCost[i].innerHTML;
+//       let number = Number(currency.replace(/[^0-9.-]+/g, ""));
+//       counter = counter + number;
+//       totalCost.innerHTML = `Total: $${counter}`;
+//     }
+//   }
+// });
 
 /**
  * PAYMENT INFO
@@ -153,9 +170,3 @@ function registration() {}
 function ccPaymentSelection() {}
 
 const form = document.querySelector("form");
-
-form.addEventListener("submit", (e) => {
-  // if(nameValidation() || ) {
-  //     e.preventDefault();
-  // }
-});
