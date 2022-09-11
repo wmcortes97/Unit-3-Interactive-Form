@@ -68,39 +68,26 @@ const checkboxes = document.querySelectorAll(".activities input");
 
 let totalCost = document.getElementById("activities-cost");
 
+let cost = 0;
+
 registerSelection.addEventListener("change", (e) => {
   let clicked = e.target;
-  let clickedCost = clicked.getAttribute("data-cost");
+  let clickedCost = +clicked.getAttribute("data-cost"); //returns number
 
-  for (let i = 0; i < checkboxes.length; i++) {
-    let checkboxCost = checkboxes[i].getAttribute("data-cost");
-
-    if (clickedCost === checkboxCost) {
-      totalCost.innerHTML = `Total: $${checkboxCost}`;
-    }
+  if (clicked.checked) {
+    cost += clickedCost;
+  } else {
+    cost -= clickedCost;
   }
+
+  totalCost.innerHTML = `Total: $${cost}`;
 });
-//console.log(clickedCost); //this works
-
-//   for (let i = 0; i<)
-// });
-
-//let counter = 0;
-
-// registerSelection.addEventListener("change", (e) => {
-//     for (let i = 0; i < eventCost.length; i++) {
-//       if (e.target.className === "activity-cost") {
-//       let currency = eventCost[i].innerHTML;
-//       let number = Number(currency.replace(/[^0-9.-]+/g, ""));
-//       counter = counter + number;
-//       totalCost.innerHTML = `Total: $${counter}`;
-//     }
-//   }
-// });
 
 /**
  * PAYMENT INFO
- *
+ *Hid bitcoin and paypal options and made the card method selected by default.
+ *Created functions for when one payment option is selected.
+ *Added an eventListener to paymentMethod and rn the functions accordingly.
  */
 
 const paymentMethod = document.getElementById("payment");
@@ -132,7 +119,8 @@ function creditCardSection() {
   paypalMessage.style.display = "none";
   bitcoinMessage.style.display = "none";
 }
-//------- ^ functions depending that will be inserted in eventListener ----------//
+//------- ^ functions that will be included in addEventListener ----------//
+
 paymentMethod.addEventListener("change", (e) => {
   if (e.target.value === "paypal") {
     paypalSelection();
@@ -145,17 +133,15 @@ paymentMethod.addEventListener("change", (e) => {
 
 /**
  * FORM VALIDATION
+ * Created functions that returns true or false
  */
 
 function nameValidation() {
   const nameInput = document.getElementById("name");
-  if (nameInput.value === "") {
-    return false;
-  } else {
-    return true;
-  }
+  const regex = /^\D\w+\s\w+\D$/;
+  return regex.test(nameInput.value);
 }
-nameValidation();
+nameValidation(); //working
 
 function emailValidation() {
   const emailInput = document.getElementById("email");
@@ -163,10 +149,30 @@ function emailValidation() {
   return regex.test(emailInput.value);
 }
 
-emailValidation();
+emailValidation(); //working
 
-function registration() {}
+function registration() {
+  for (let i = 0; i < checkboxes.length; i++) {
+    if (checkboxes[i].checked) {
+      return true;
+      break;
+    }
+  }
+}
 
-function ccPaymentSelection() {}
+registration(); //returns true if one is checked and undefined if all unchecked
+
+function ccPaymentSelection() {
+  const cardNumber = document.querySelector();
+  const zipcode = document.getElementById();
+  const cvv = document.getElementById();
+}
 
 const form = document.querySelector("form");
+
+form.addEventListener("submit", (e) => {
+  if (nameValidation() && emailValidation()) {
+  } else {
+    console.log("prevented");
+  }
+});
