@@ -133,7 +133,7 @@ paymentMethod.addEventListener("change", (e) => {
 
 /**
  * FORM VALIDATION
- * Created functions that returns true or false
+ * Created functions that returns true or false that will be added to the eventListener with the submit handler.
  */
 
 function nameValidation() {
@@ -159,19 +159,55 @@ function registration() {
     }
   }
 }
-
 registration(); //returns true if one is checked and undefined if all unchecked
 
-function cardNumber() {}
-function zipcode() {}
-function cvv() {}
+function cardNumber() {
+  const cardNumber = document.getElementById("cc-num");
+  const regex = /^\d{13,16}$/;
+  return regex.test(cardNumber.value);
+}
+cardNumber();
+
+function zipcode() {
+  const zipcode = document.getElementById("zip");
+  const regex = /^\d{5}$/;
+  return regex.test(zipcode.value);
+}
+
+zipcode();
+
+function cvv() {
+  const cvv = document.getElementById("cvv");
+  const regex = /^\d{3}$/;
+  return regex.test(cvv.value);
+}
+
+cvv();
 
 const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
-  if (nameValidation() && emailValidation() && registration()) {
+  if (
+    nameValidation() &&
+    emailValidation() &&
+    registration() &&
+    cardNumber() &&
+    zipcode() &&
+    cvv()
+  ) {
   } else {
-    //e.target.preventDefault();
-    console.log("prevent");
+    e.preventDefault();
+    //console.log("prevent");
   }
 });
+
+/**
+ * ACCESSIBILITY
+ * Making focus states more obvious for checkbox inputs
+ */
+
+//const checkboxes = document.querySelectorAll(".activities input");
+
+// checkboxes.addEventListener("focus", (e) => {
+//   for (let i = 0; i < checkboxes.length; i++) {}
+// });
