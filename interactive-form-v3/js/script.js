@@ -139,7 +139,12 @@ paymentMethod.addEventListener("change", (e) => {
 function nameValidation() {
   const nameInput = document.getElementById("name");
   const regex = /^\D\w+\s\w+\D$/;
-  return regex.test(nameInput.value);
+  if (regex.test(nameInput.value)) {
+    return true;
+  } else {
+    nameInput.parentElement.className = ".not-valid";
+    return false;
+  }
 }
 nameValidation(); //working
 
@@ -161,6 +166,7 @@ function registration() {
 }
 registration(); //returns true if one is checked and undefined if all unchecked
 
+//------------------- credit card validtion-------------------//
 function cardNumber() {
   const cardNumber = document.getElementById("cc-num");
   const regex = /^\d{13,16}$/;
@@ -205,7 +211,6 @@ form.addEventListener("submit", (e) => {
   if (nameValidation() && emailValidation() && registration() && ccValidity()) {
   } else {
     e.preventDefault();
-    //console.log("prevent");
   }
 });
 
@@ -214,8 +219,4 @@ form.addEventListener("submit", (e) => {
  * Making focus states more obvious for checkbox inputs
  */
 
-//const checkboxes = document.querySelectorAll(".activities input");
-
-// checkboxes.addEventListener("focus", (e) => {
-//   for (let i = 0; i < checkboxes.length; i++) {}
-// });
+const activitiesSection = document.getElementById("activities-box");
