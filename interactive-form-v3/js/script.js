@@ -162,17 +162,16 @@ function registration() {
 
 registration(); //returns true if one is checked and undefined if all unchecked
 
-function ccPaymentSelection() {
-  const cardNumber = document.querySelector();
-  const zipcode = document.getElementById();
-  const cvv = document.getElementById();
-}
+function cardNumber() {}
+function zipcode() {}
+function cvv() {}
 
 const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
-  if (nameValidation() && emailValidation()) {
+  if (nameValidation() && emailValidation() && registration()) {
   } else {
-    console.log("prevented");
+    //e.target.preventDefault();
+    console.log("prevent");
   }
 });
