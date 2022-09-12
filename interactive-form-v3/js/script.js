@@ -184,17 +184,25 @@ function cvv() {
 
 cvv();
 
+//const paymentMethod = document.getElementById("payment");
+function ccValidity() {
+  if (paymentMethod.value === "credit-card") {
+    if (cardNumber() && zipcode() && cvv()) {
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return true;
+  }
+}
+
+ccValidity();
+
 const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
-  if (
-    nameValidation() &&
-    emailValidation() &&
-    registration() &&
-    cardNumber() &&
-    zipcode() &&
-    cvv()
-  ) {
+  if (nameValidation() && emailValidation() && registration() && ccValidity()) {
   } else {
     e.preventDefault();
     //console.log("prevent");
