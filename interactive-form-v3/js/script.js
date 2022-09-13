@@ -252,5 +252,15 @@ form.addEventListener("submit", (e) => {
 
 const activitiesSection = document.getElementById("activities-box");
 
+activitiesSection.addEventListener("focusin", (e) => {
+  for (let i = 0; i < activitiesSection.children.length; i++) {
+    if (e.target.type === "checkbox") {
+      activitiesSection.children[i].className = "focus";
+    }
+  }
+});
+
+activitiesSection.addEventListener("focusout", (e) => {});
+
 //focusin //adding class to parent element label
 //focusout
