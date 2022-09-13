@@ -141,9 +141,11 @@ function nameValidation() {
   const regex = /^\D\w+\s\w+\D$/;
   if (regex.test(nameInput.value)) {
     nameInput.parentElement.className = "valid";
+    nameInput.parentElement.lastElementChild.style.display = "none";
     return true;
   } else {
     nameInput.parentElement.className = "not-valid";
+    nameInput.parentElement.lastElementChild.style.display = "inline";
     return false;
   }
 }
@@ -238,7 +240,7 @@ form.addEventListener("submit", (e) => {
     }
     if (cvv()) {
     } else {
-      e.preventDefault;
+      e.preventDefault();
     }
   }
 });
