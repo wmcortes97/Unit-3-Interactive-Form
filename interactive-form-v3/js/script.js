@@ -117,7 +117,7 @@ function paymentDisplay(displayed, removed1, removed2) {
   removed2.style.display = "none";
 }
 
-//------- ^ functions that will be included in addEventListener ----------//
+//------- ^ helper function that will be added in event listener----------//
 
 paymentMethod.addEventListener("change", (e) => {
   if (e.target.value === "paypal") {
@@ -130,8 +130,9 @@ paymentMethod.addEventListener("change", (e) => {
 });
 
 /**
- * FORM VALIDATION
- * Created functions that returns true or false that will be added to the eventListener with the submit handler.
+ * FORM VALIDATION/ ACCESSIBILITY
+ * created a helper function that returns true or false that will be added to the eventListener with the submit handler
+ * used this helper function to validate, name, email, cc-num, zip, and cvv
  */
 
 function validation(regexTester, element) {
@@ -148,18 +149,24 @@ function validation(regexTester, element) {
   }
 }
 
+//---------------helper function ^ --------------------//
+
 function registration() {
-  const checkboxes = document.querySelectorAll(".activities input");
-  for (let i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i].checked) {
+  for (let i = 0; i < checkboxInput.length; i++) {
+    if (checkboxInput[i].checked) {
+      registerSelection.firstElementChild.className = "valid";
+      registerSelection.lastElementChild.style.display = "none";
       return true;
       break;
+    } else {
+      registerSelection.firstElementChild.className = "not-valid";
+      registerSelection.lastElementChild.style.display = "inline";
     }
   }
 }
-registration(); //returns true if one is checked and undefined if all unchecked
+// registration(); //returns true if one is checked and undefined if all unchecked
 
-//------------------- credit card validtion-------------------//
+//------------------- separate function for registration validation ^ -------------------//
 
 const form = document.querySelector("form");
 
@@ -195,6 +202,11 @@ form.addEventListener("submit", (e) => {
 /**
  * ACCESSIBILITY
  * Making focus states more obvious for checkbox inputs
+ * created two variables:
+ *  the first variable holds the parent element that holds the label and inputs of registration boxes
+ *  the second variable holds the individal input elements that can be selected using bracket notation
+ * used two event listeners, one with the focusin handler, and the second with the focosout handler
+ * looped through the input elements to assign class when focusin and remove class when focusout
  */
 
 const activitiesSection = document.getElementById("activities-box");
@@ -215,6 +227,3 @@ activitiesSection.addEventListener("focusout", (e) => {
     }
   }
 });
-
-//focusin //adding class to parent element label
-//focusout
