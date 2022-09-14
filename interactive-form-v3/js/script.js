@@ -117,23 +117,6 @@ function paymentDisplay(displayed, removed1, removed2) {
   removed2.style.display = "none";
 }
 
-// function paypalSelection() {
-//   paypalMessage.removeAttribute("style");
-//   bitcoinMessage.style.display = "none";
-//   creditCardField.style.display = "none";
-// }
-// function bitcoinSelection() {
-//   bitcoinMessage.removeAttribute("style");
-//   paypalMessage.style.display = "none";
-//   creditCardField.style.display = "none";
-// }
-
-// function creditCardSection() {
-//   creditCardField.removeAttribute("style");
-//   paypalMessage.style.display = "none";
-//   bitcoinMessage.style.display = "none";
-// }
-
 //------- ^ functions that will be included in addEventListener ----------//
 
 paymentMethod.addEventListener("change", (e) => {
@@ -164,75 +147,6 @@ function validation(regexTester, element) {
     return false;
   }
 }
-
-// function nameValidation() {
-//   const nameInput = document.getElementById("name");
-//   const regex = /^\D\w+\s\w+\D$/;
-//   if (regex.test(nameInput.value)) {
-//     nameInput.parentElement.className = "valid";
-//     nameInput.parentElement.lastElementChild.style.display = "none";
-//     return true;
-//   } else {
-//     nameInput.parentElement.className = "not-valid";
-//     nameInput.parentElement.lastElementChild.style.display = "inline";
-//     return false;
-//   }
-// }
-//nameValidation();
-
-// function emailValidation() {
-//   const emailInput = document.getElementById("email");
-//   const regex = /^\w+@\w+\.com$/;
-//   if (regex.test(emailInput.value)) {
-//     emailInput.parentElement.className = "valid";
-//     return true;
-//   } else {
-//     emailInput.parentElement.className = "not-valid";
-//     return false;
-//   }
-// }
-//emailValidation();
-// validation(/^\w+@\w+\.com$/, "email");
-
-// function cardNumber() {
-//   const cardNumber = document.getElementById("cc-num");
-//   const regex = /^\d{13,16}$/;
-//   if (regex.test(cardNumber.value)) {
-//     cardNumber.parentElement.className = "valid";
-//     return true;
-//   } else {
-//     cardNumber.parentElement.className = "not-valid";
-//     return false;
-//   }
-// }
-// //cardNumber();
-// validation(/^\d{13,16}$/, "cc-num");
-
-// function zipcode() {
-//   const zipcode = document.getElementById("zip");
-//   const regex = /^\d{5}$/;
-//   if (regex.test(zipcode.value)) {
-//     zipcode.parentElement.className = "valid";
-//     return true;
-//   } else {
-//     zipcode.parentElement.className = "not-valid";
-//     return false;
-//   }
-// }
-
-//zipcode();
-
-// function cvv() {
-//   const cvv = document.getElementById("cvv");
-//   const regex = /^\d{3}$/;
-//   if (regex.test(cvv.value)) {
-//     cvv.parentElement.className = "valid";
-//     return true;
-//   } else {
-//     cvv.parentElement.classList = "not-valid";
-//     return false;
-//   }
-// }
 
 function registration() {
   const checkboxes = document.querySelectorAll(".activities input");
