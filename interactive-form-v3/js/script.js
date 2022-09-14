@@ -111,31 +111,38 @@ const creditCardField = document.getElementById("credit-card");
 
 //-------- what user sees on page initially ^ -------//
 
-function paypalSelection() {
-  paypalMessage.removeAttribute("style");
-  bitcoinMessage.style.display = "none";
-  creditCardField.style.display = "none";
-}
-function bitcoinSelection() {
-  bitcoinMessage.removeAttribute("style");
-  paypalMessage.style.display = "none";
-  creditCardField.style.display = "none";
+function paymentDisplay(displayed, removed1, removed2) {
+  displayed.removeAttribute("style");
+  removed1.style.display = "none";
+  removed2.style.display = "none";
 }
 
-function creditCardSection() {
-  creditCardField.removeAttribute("style");
-  paypalMessage.style.display = "none";
-  bitcoinMessage.style.display = "none";
-}
+// function paypalSelection() {
+//   paypalMessage.removeAttribute("style");
+//   bitcoinMessage.style.display = "none";
+//   creditCardField.style.display = "none";
+// }
+// function bitcoinSelection() {
+//   bitcoinMessage.removeAttribute("style");
+//   paypalMessage.style.display = "none";
+//   creditCardField.style.display = "none";
+// }
+
+// function creditCardSection() {
+//   creditCardField.removeAttribute("style");
+//   paypalMessage.style.display = "none";
+//   bitcoinMessage.style.display = "none";
+// }
+
 //------- ^ functions that will be included in addEventListener ----------//
 
 paymentMethod.addEventListener("change", (e) => {
   if (e.target.value === "paypal") {
-    paypalSelection();
+    paymentDisplay(paypalMessage, bitcoinMessage, creditCardField);
   } else if (e.target.value === "bitcoin") {
-    bitcoinSelection();
+    paymentDisplay(bitcoinMessage, paypalMessage, creditCardField);
   } else {
-    creditCardSection();
+    paymentDisplay(creditCardField, paypalMessage, bitcoinMessage);
   }
 });
 
@@ -144,33 +151,48 @@ paymentMethod.addEventListener("change", (e) => {
  * Created functions that returns true or false that will be added to the eventListener with the submit handler.
  */
 
-function nameValidation() {
-  const nameInput = document.getElementById("name");
-  const regex = /^\D\w+\s\w+\D$/;
-  if (regex.test(nameInput.value)) {
-    nameInput.parentElement.className = "valid";
-    nameInput.parentElement.lastElementChild.style.display = "none";
+function validation(regexTester, element) {
+  const input = document.getElementById(element);
+  const regex = regexTester;
+  if (regex.test(input.value)) {
+    input.parentElement.className = "valid";
+    input.parentElement.lastElementChild.style.display = "none";
     return true;
   } else {
-    nameInput.parentElement.className = "not-valid";
-    nameInput.parentElement.lastElementChild.style.display = "inline";
+    input.parentElement.className = "not-valid";
+    input.parentElement.lastElementChild.style.display = "inline";
     return false;
   }
 }
+
+// function nameValidation() {
+//   const nameInput = document.getElementById("name");
+//   const regex = /^\D\w+\s\w+\D$/;
+//   if (regex.test(nameInput.value)) {
+//     nameInput.parentElement.className = "valid";
+//     nameInput.parentElement.lastElementChild.style.display = "none";
+//     return true;
+//   } else {
+//     nameInput.parentElement.className = "not-valid";
+//     nameInput.parentElement.lastElementChild.style.display = "inline";
+//     return false;
+//   }
+// }
 //nameValidation();
 
-function emailValidation() {
-  const emailInput = document.getElementById("email");
-  const regex = /^\w+@\w+\.com$/;
-  if (regex.test(emailInput.value)) {
-    emailInput.parentElement.className = "valid";
-    return true;
-  } else {
-    emailInput.parentElement.className = "not-valid";
-    return false;
-  }
-}
+// function emailValidation() {
+//   const emailInput = document.getElementById("email");
+//   const regex = /^\w+@\w+\.com$/;
+//   if (regex.test(emailInput.value)) {
+//     emailInput.parentElement.className = "valid";
+//     return true;
+//   } else {
+//     emailInput.parentElement.className = "not-valid";
+//     return false;
+//   }
+// }
 //emailValidation();
+// validation(/^\w+@\w+\.com$/, "email");
 
 function registration() {
   const checkboxes = document.querySelectorAll(".activities input");
@@ -226,11 +248,11 @@ function cvv() {
 const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
-  if (nameValidation()) {
+  if (validation(/^\D\w+\s\w+\D$/, "name")) {
   } else {
     e.preventDefault();
   }
-  if (emailValidation()) {
+  if (validation(/^\w+@\w+\.com$/, "email")) {
   } else {
     e.preventDefault();
   }
