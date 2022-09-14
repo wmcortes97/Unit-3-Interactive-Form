@@ -7,8 +7,11 @@ document.getElementById("name").focus();
 
 /**
  * JOB ROLE
- * hide other-jon-role input field
+ * hide other-job-role input field
  * display other-job-role when user selects 'other'
+ * used an event listener to detect user's selection of "other"
+ * user will initially not see this field, set display to "none"
+ * remove style attribute so user sees default display when they choose "other"
  */
 
 let otherJob = document.getElementById("other-job-role");
@@ -27,9 +30,10 @@ jobTitle.addEventListener("change", (e) => {
 /**
  * T-SHIRT INFO
  * disable the color option
- * group color options based on data theme
- * addEventListener to select element for t-shirt design
- * color options change depending on t-shirt design.
+ * group color options based on data-theme attribute
+ * used an event listener to select element for t-shirt design
+ * used if conditions to listen to user's t-shirt design selection, since there are two design options, created two for loops
+ * inside each condition statement, I inserted a for loop to display or hide the shirt color options that was dependent on their design selection
  */
 const chooseColor = document.getElementById("color");
 chooseColor.disabled = true;
@@ -60,11 +64,13 @@ chooseTheme.addEventListener("change", (e) => {
 /**
  * REGIESTER FOR ACTIVITIES
  * Total $ should update to reflect the sum of cost
+ * created four variables:
+ *  the element where the event listener will be added
+ *  the element that
+ *
  */
 
 const registerSelection = document.getElementById("activities");
-
-const checkboxes = document.querySelectorAll(".activities input");
 
 let totalCost = document.getElementById("activities-cost");
 
@@ -165,6 +171,7 @@ function emailValidation() {
 //emailValidation();
 
 function registration() {
+  const checkboxes = document.querySelectorAll(".activities input");
   for (let i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
       return true;
