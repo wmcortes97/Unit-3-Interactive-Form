@@ -46,15 +46,17 @@ const chooseTheme = document.getElementById("design");
 chooseTheme.addEventListener("change", (e) => {
   if (e.target.value === "js puns") {
     chooseColor.disabled = false;
+    chooseColor[0].selected = true;
     for (let i = 0; i < jsHearts.length; i++) {
-      jsHearts[i].style.display = "none";
-      jsPuns[i].removeAttribute("style");
+      jsHearts[i].hidden = true;
+      jsPuns[i].hidden = false;
     }
   } else if (e.target.value === "heart js") {
     chooseColor.disabled = false;
+    chooseColor[0].selected = true;
     for (let i = 0; i < jsPuns.length; i++) {
-      jsPuns[i].style.display = "none";
-      jsHearts[i].removeAttribute("style");
+      jsPuns[i].hidden = true;
+      jsHearts[i].hidden = false;
     }
   } else {
     chooseColor.disabled = true;
