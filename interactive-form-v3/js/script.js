@@ -171,7 +171,7 @@ function registration() {
 const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
-  if (validation(/^\D\w+\s\w+\D$/, "name")) {
+  if (validation(/^\D\w+\D$/, "name")) {
   } else {
     e.preventDefault();
   }
