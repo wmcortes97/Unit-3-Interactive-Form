@@ -251,16 +251,23 @@ form.addEventListener("submit", (e) => {
  */
 
 const activitiesSection = document.getElementById("activities-box");
+const checkboxInput = document.querySelectorAll("#activities-box input");
 
 activitiesSection.addEventListener("focusin", (e) => {
-  for (let i = 0; i < activitiesSection.children.length; i++) {
-    if (e.target.type === "checkbox") {
-      activitiesSection.children[i].className = "focus";
+  for (let i = 0; i < checkboxInput.length; i++) {
+    if (e.target === checkboxInput[i]) {
+      checkboxInput[i].parentElement.className = "focus";
     }
   }
 });
 
-activitiesSection.addEventListener("focusout", (e) => {});
+activitiesSection.addEventListener("focusout", (e) => {
+  for (let i = 0; i < checkboxInput.length; i++) {
+    if (e.target === checkboxInput[i]) {
+      checkboxInput[i].parentElement.classList.remove("focus");
+    }
+  }
+});
 
 //focusin //adding class to parent element label
 //focusout
