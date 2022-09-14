@@ -66,7 +66,9 @@ chooseTheme.addEventListener("change", (e) => {
  * Total $ should update to reflect the sum of cost
  * created four variables:
  *  the element where the event listener will be added
- *  the element that
+ *  the element where the total price will be insterted
+ *  the element that represents an initial counter
+ * created an if statement that, when checked or unchecked, would add/ substract the data-cost value to the counter
  *
  */
 
@@ -78,7 +80,7 @@ let cost = 0;
 
 registerSelection.addEventListener("change", (e) => {
   let clicked = e.target;
-  let clickedCost = +clicked.getAttribute("data-cost"); //returns number
+  let clickedCost = +clicked.getAttribute("data-cost"); //changed string into number
 
   if (clicked.checked) {
     cost += clickedCost;
@@ -91,9 +93,9 @@ registerSelection.addEventListener("change", (e) => {
 
 /**
  * PAYMENT INFO
- *Hid bitcoin and paypal options and made the card method selected by default.
- *Created functions for when one payment option is selected.
- *Added an eventListener to paymentMethod and rn the functions accordingly.
+ *hid bitcoin and paypal options and made the card method selected by default.
+ *created functions for when one payment option is selected.
+ *added an eventListener to paymentMethod and ran the functions accordingly.
  */
 
 const paymentMethod = document.getElementById("payment");
