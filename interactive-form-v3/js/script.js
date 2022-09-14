@@ -194,6 +194,46 @@ function validation(regexTester, element) {
 //emailValidation();
 // validation(/^\w+@\w+\.com$/, "email");
 
+// function cardNumber() {
+//   const cardNumber = document.getElementById("cc-num");
+//   const regex = /^\d{13,16}$/;
+//   if (regex.test(cardNumber.value)) {
+//     cardNumber.parentElement.className = "valid";
+//     return true;
+//   } else {
+//     cardNumber.parentElement.className = "not-valid";
+//     return false;
+//   }
+// }
+// //cardNumber();
+// validation(/^\d{13,16}$/, "cc-num");
+
+// function zipcode() {
+//   const zipcode = document.getElementById("zip");
+//   const regex = /^\d{5}$/;
+//   if (regex.test(zipcode.value)) {
+//     zipcode.parentElement.className = "valid";
+//     return true;
+//   } else {
+//     zipcode.parentElement.className = "not-valid";
+//     return false;
+//   }
+// }
+
+//zipcode();
+
+// function cvv() {
+//   const cvv = document.getElementById("cvv");
+//   const regex = /^\d{3}$/;
+//   if (regex.test(cvv.value)) {
+//     cvv.parentElement.className = "valid";
+//     return true;
+//   } else {
+//     cvv.parentElement.classList = "not-valid";
+//     return false;
+//   }
+// }
+
 function registration() {
   const checkboxes = document.querySelectorAll(".activities input");
   for (let i = 0; i < checkboxes.length; i++) {
@@ -206,44 +246,6 @@ function registration() {
 registration(); //returns true if one is checked and undefined if all unchecked
 
 //------------------- credit card validtion-------------------//
-function cardNumber() {
-  const cardNumber = document.getElementById("cc-num");
-  const regex = /^\d{13,16}$/;
-  if (regex.test(cardNumber.value)) {
-    cardNumber.parentElement.className = "valid";
-    return true;
-  } else {
-    cardNumber.parentElement.className = "not-valid";
-    return false;
-  }
-}
-//cardNumber();
-
-function zipcode() {
-  const zipcode = document.getElementById("zip");
-  const regex = /^\d{5}$/;
-  if (regex.test(zipcode.value)) {
-    zipcode.parentElement.className = "valid";
-    return true;
-  } else {
-    zipcode.parentElement.className = "not-valid";
-    return false;
-  }
-}
-
-//zipcode();
-
-function cvv() {
-  const cvv = document.getElementById("cvv");
-  const regex = /^\d{3}$/;
-  if (regex.test(cvv.value)) {
-    cvv.parentElement.className = "valid";
-    return true;
-  } else {
-    cvv.parentElement.classList = "not-valid";
-    return false;
-  }
-}
 
 const form = document.querySelector("form");
 
@@ -261,15 +263,15 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
   }
   if (paymentMethod.value === "credit-card") {
-    if (cardNumber()) {
+    if (validation(/^\d{13,16}$/, "cc-num")) {
     } else {
       e.preventDefault();
     }
-    if (zipcode()) {
+    if (validation(/^\d{5}$/, "zip")) {
     } else {
       e.preventDefault();
     }
-    if (cvv()) {
+    if (validation(/^\d{3}$/, "cvv")) {
     } else {
       e.preventDefault();
     }
