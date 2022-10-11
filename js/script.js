@@ -38,10 +38,10 @@ jobTitle.addEventListener("change", (e) => {
 const chooseColor = document.getElementById("color");
 chooseColor.disabled = true;
 
-const jsPuns = document.querySelectorAll('[data-theme="js puns"]');
-const jsHearts = document.querySelectorAll('[data-theme="heart js"]');
+const jsPuns = document.querySelectorAll('[data-theme="js puns"]'); //color
+const jsHearts = document.querySelectorAll('[data-theme="heart js"]'); //color
 
-const chooseTheme = document.getElementById("design");
+const chooseTheme = document.getElementById("design"); //drop down choose 
 
 chooseTheme.addEventListener("change", (e) => {
   if (e.target.value === "js puns") {
